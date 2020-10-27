@@ -34,4 +34,14 @@ jobs:
         run: git add .
       
       - name: Git Diff
-        run: git diff --staged
+        run: DIFF=$(git diff --staged)
+      
+      - name: Verify diff
+        run: |
+          if [ -z "$DIFF" ]
+          then
+            exit 0
+          else
+            echo "Vendor not up to date"
+            exit 1
+          fi
