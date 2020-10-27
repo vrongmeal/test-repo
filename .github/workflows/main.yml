@@ -34,7 +34,7 @@ jobs:
         run: git add .
       
       - name: Git Diff
-        run: DIFF=$(git diff --staged)
+        run: DIFF=$(git diff --staged) && echo "$DIFF"
       
       - name: Verify diff
         run: |
